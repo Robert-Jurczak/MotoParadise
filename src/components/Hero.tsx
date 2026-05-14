@@ -29,17 +29,17 @@ const TRUST_ITEMS = [
 
 const BRANDS: { name: string; logo: string; imgClass?: string }[] = [
   { name: 'Honda',           logo: logoHonda },
-  { name: 'Kawasaki',        logo: logoKawasaki },
+  { name: 'Kawasaki',        logo: logoKawasaki, imgClass: 'h-10' },
   { name: 'Yamaha',          logo: logoYamaha },
   { name: 'Suzuki',          logo: logoSuzuki },
   { name: 'BMW',             logo: logoBMW },
   { name: 'Ducati',          logo: logoDucati },
-  { name: 'KTM',             logo: logoKTM },
+  { name: 'KTM',             logo: logoKTM,      imgClass: 'h-10' },
   { name: 'Husqvarna',       logo: logoHusqvarna },
   { name: 'Harley-Davidson', logo: logoHarley },
-  { name: 'Indian',          logo: logoIndian, imgClass: 'h-5' },
-  { name: 'Triumph',         logo: logoTriumph },
-  { name: 'Aprilia',         logo: logoAprilia },
+  { name: 'Indian',          logo: logoIndian,   imgClass: 'h-4' },
+  { name: 'Triumph',         logo: logoTriumph,  imgClass: 'h-10' },
+  { name: 'Aprilia',         logo: logoAprilia,  imgClass: 'h-10' },
   { name: 'Italika',         logo: logoItalika },
 ]
 
