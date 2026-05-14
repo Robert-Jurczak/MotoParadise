@@ -31,7 +31,7 @@ const QUICK_LINKS = [
   },
   {
     icon: MapPin,
-    href: 'https://www.google.com/maps/place/Moto+Paradise+Garza+Sada/@25.6611098,-100.3002639,17z',
+    href: 'https://maps.app.goo.gl/Bs96J9TnSJhJV2Rt7',
     label: 'Google Maps',
     color: '#ffffff',
   },
@@ -153,7 +153,7 @@ export default function Contact() {
               description="Visítanos de Lun–Vie 9:00–19:00, Sáb 9:00–15:00."
             >
               <a
-                href="https://www.google.com/maps/place/Moto+Paradise+Garza+Sada/@25.6611098,-100.3002639,17z"
+                href="https://maps.app.goo.gl/Bs96J9TnSJhJV2Rt7"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-mono text-sm font-medium text-white/80 hover:text-white transition-colors tracking-wide leading-relaxed"

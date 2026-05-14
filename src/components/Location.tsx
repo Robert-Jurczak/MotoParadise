@@ -1,6 +1,39 @@
 import { motion } from 'framer-motion'
-import { MapPin, Clock, Phone, ChevronRight } from 'lucide-react'
+import { MapPin, Clock, Phone, ChevronRight, Navigation } from 'lucide-react'
 import { fadeLeft, fadeRight, fadeUp, VIEWPORT } from '../lib/animations'
+
+const DEST = 'Moto+Paradise+Garza+Sada,+Monterrey,+NL'
+const MAPS_URL = 'https://maps.app.goo.gl/Bs96J9TnSJhJV2Rt7'
+
+function DirectionsButton() {
+  const handleClick = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        ({ coords }) => {
+          window.open(
+            `https://www.google.com/maps/dir/${coords.latitude},${coords.longitude}/${DEST}`,
+            '_blank',
+          )
+        },
+        () => {
+          window.open(MAPS_URL, '_blank')
+        },
+      )
+    } else {
+      window.open(MAPS_URL, '_blank')
+    }
+  }
+
+  return (
+    <button
+      onClick={handleClick}
+      className="mt-4 w-full flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-white text-sm font-semibold px-6 py-3 rounded-xl transition-colors duration-200"
+    >
+      <Navigation size={16} />
+      ¿Cómo llegar?
+    </button>
+  )
+}
 
 const HOURS = [
   { day: 'Lunes – Viernes', time: '9:00 AM – 7:00 PM' },
@@ -39,18 +72,21 @@ export default function Location() {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            className="rounded-2xl overflow-hidden border border-white/[0.06] aspect-[4/3] lg:aspect-auto lg:min-h-[420px]"
+            className="flex flex-col"
           >
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3596.307188436817!2d-100.30026388816948!3d25.66110977732112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662bf72eecfff95%3A0xd198a14a480906e8!2sMoto%20Paradise%20Garza%20Sada!5e0!3m2!1spl!2smx!4v1778722438180!5m2!1spl!2smx"
-              width="100%"
-              height="100%"
-              style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) saturate(0.5)' }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Moto Paradise en Monterrey, Nuevo León"
-            />
+            <div className="rounded-2xl overflow-hidden border border-white/[0.06] aspect-[4/3] lg:aspect-auto lg:min-h-[420px]">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3596.307188436817!2d-100.30026388816948!3d25.66110977732112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662bf72eecfff95%3A0xd198a14a480906e8!2sMoto%20Paradise%20Garza%20Sada!5e0!3m2!1spl!2smx!4v1778722438180!5m2!1spl!2smx"
+                width="100%"
+                height="100%"
+                style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) saturate(0.5)' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Moto Paradise en Monterrey, Nuevo León"
+              />
+            </div>
+            <DirectionsButton />
           </motion.div>
 
           {/* Details */}
@@ -74,7 +110,7 @@ export default function Location() {
                   Monterrey, N.L., México
                 </p>
                 <a
-                  href="https://maps.google.com/?q=Av.+Eugenio+Garza+Sada+Sur+1620,+Nuevo+Repueblo,+64821+Monterrey"
+                  href={MAPS_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 text-brand text-xs font-medium mt-2 hover:opacity-80 transition-opacity"

@@ -2,6 +2,30 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 
+function Logo() {
+  return (
+    <a href="#" className="flex items-center gap-3 shrink-0" aria-label="Moto Paradise inicio">
+      {/* Mark: two red chevron peaks */}
+      <svg viewBox="0 0 243 151" className="h-10 w-auto" aria-hidden="true">
+        <polygon points="87.67,150.35 0,150.35 86.2,0 128.86,77.77" fill="#DF0914" />
+        <polygon points="201.37,150.35 113.7,150.35 199.89,0 242.55,77.77" fill="#DF0914" />
+      </svg>
+      {/* Wordmark */}
+      <div className="flex flex-col leading-none">
+        <span className="text-[15px] font-black tracking-tight text-white uppercase leading-[1.1]">Moto</span>
+        <span className="text-[15px] font-black tracking-tight text-white uppercase leading-[1.1]">
+          Paradise<sup className="text-[8px] font-bold relative -top-1 ml-px">®</sup>
+        </span>
+        <div className="flex items-center gap-1.5 mt-[5px]">
+          <span className="h-px w-4 bg-brand" />
+          <span className="text-[7px] font-bold tracking-[0.22em] text-brand uppercase">Servicio</span>
+          <span className="h-px w-4 bg-brand" />
+        </div>
+      </div>
+    </a>
+  )
+}
+
 const NAV_LINKS = [
   { label: 'Servicios', href: '#services' },
   { label: 'Reseñas', href: '#reviews' },
@@ -30,13 +54,7 @@ export default function Header() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group" aria-label="Moto Paradise inicio">
-            <span className="w-2 h-2 rounded-full bg-brand group-hover:scale-125 transition-transform duration-300" />
-            <span className="font-bold text-sm tracking-widest uppercase text-white">
-              Moto Paradise
-            </span>
-          </a>
+          <Logo />
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-8" aria-label="Navegación principal">
