@@ -27,7 +27,7 @@ const TRUST_ITEMS = [
   { icon: Clock, label: 'Disponible hoy' },
 ]
 
-const BRANDS = [
+const BRANDS: { name: string; logo: string; imgClass?: string }[] = [
   { name: 'Honda',           logo: logoHonda },
   { name: 'Kawasaki',        logo: logoKawasaki },
   { name: 'Yamaha',          logo: logoYamaha },
@@ -37,7 +37,7 @@ const BRANDS = [
   { name: 'KTM',             logo: logoKTM },
   { name: 'Husqvarna',       logo: logoHusqvarna },
   { name: 'Harley-Davidson', logo: logoHarley },
-  { name: 'Indian',          logo: logoIndian },
+  { name: 'Indian',          logo: logoIndian, imgClass: 'h-5' },
   { name: 'Triumph',         logo: logoTriumph },
   { name: 'Aprilia',         logo: logoAprilia },
   { name: 'Italika',         logo: logoItalika },
@@ -193,12 +193,12 @@ export default function Hero() {
             {/* Slider */}
             <div className="relative flex-1 overflow-hidden w-full">
               <InfiniteSlider speed={35} gap={56} pauseOnHover>
-                {BRANDS.map(({ name, logo }) => (
+                {BRANDS.map(({ name, logo, imgClass }) => (
                   <div key={name} className="flex items-center justify-center flex-shrink-0">
                     <img
                       src={logo}
                       alt={`${name} — Moto Paradise Monterrey`}
-                      className="h-7 w-auto object-contain opacity-35 hover:opacity-90 transition-opacity duration-300"
+                      className={`${imgClass ?? 'h-7'} w-auto object-contain opacity-35 hover:opacity-90 transition-opacity duration-300`}
                       loading="lazy"
                     />
                   </div>
