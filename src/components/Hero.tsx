@@ -2,6 +2,22 @@ import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Phone, MessageCircle, ShieldCheck, Star, Clock } from 'lucide-react'
 import { EASE_OUT_EXPO } from '../lib/animations'
+import { InfiniteSlider } from './ui/InfiniteSlider'
+
+import logoHonda from '../assets/logos/honda.svg'
+import logoSuzuki from '../assets/logos/suzuki.svg'
+import logoBMW from '../assets/logos/bmw.svg'
+import logoDucati from '../assets/logos/ducati.svg'
+import logoKTM from '../assets/logos/ktm.svg'
+import logoHusqvarna from '../assets/logos/husqvarna.svg'
+import logoHarley from '../assets/logos/harley.svg'
+import logoKawasaki from '../assets/logos/kawasaki.svg'
+import logoYamaha from '../assets/logos/yamaha.svg'
+import logoTriumph from '../assets/logos/triumph.svg'
+import logoAprilia from '../assets/logos/aprilia.svg'
+import logoItalika from '../assets/logos/italika.svg'
+import logoIndian from '../assets/logos/indian.svg'
+
 
 const HERO_IMAGE = 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1920&q=80'
 
@@ -9,6 +25,22 @@ const TRUST_ITEMS = [
   { icon: Star, label: '10 años de experiencia' },
   { icon: ShieldCheck, label: 'Garantía en todas las reparaciones' },
   { icon: Clock, label: 'Disponible hoy' },
+]
+
+const BRANDS = [
+  { name: 'Honda',           logo: logoHonda },
+  { name: 'Kawasaki',        logo: logoKawasaki },
+  { name: 'Yamaha',          logo: logoYamaha },
+  { name: 'Suzuki',          logo: logoSuzuki },
+  { name: 'BMW',             logo: logoBMW },
+  { name: 'Ducati',          logo: logoDucati },
+  { name: 'KTM',             logo: logoKTM },
+  { name: 'Husqvarna',       logo: logoHusqvarna },
+  { name: 'Harley-Davidson', logo: logoHarley },
+  { name: 'Indian',          logo: logoIndian },
+  { name: 'Triumph',         logo: logoTriumph },
+  { name: 'Aprilia',         logo: logoAprilia },
+  { name: 'Italika',         logo: logoItalika },
 ]
 
 const containerVariants = {
@@ -40,10 +72,7 @@ export default function Hero() {
       aria-label="Hero Moto Paradise"
     >
       {/* Parallax background */}
-      <motion.div
-        className="absolute inset-0 z-0"
-        style={{ y: imageY }}
-      >
+      <motion.div className="absolute inset-0 z-0" style={{ y: imageY }}>
         <img
           src={HERO_IMAGE}
           alt="Motocicleta en Moto Paradise, Monterrey"
@@ -60,14 +89,17 @@ export default function Hero() {
         style={{ opacity: overlayOpacity }}
       />
 
-      {/* Subtle noise grain texture */}
-      <div className="absolute inset-0 z-10 opacity-[0.03] pointer-events-none"
-        style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\'/%3E%3C/svg%3E")',
-          backgroundSize: '200px 200px' }}
+      {/* Noise grain */}
+      <div
+        className="absolute inset-0 z-10 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\'/%3E%3C/svg%3E")',
+          backgroundSize: '200px 200px',
+        }}
       />
 
-      {/* Content */}
-      <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-24">
+      {/* Main content */}
+      <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-16">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -130,10 +162,7 @@ export default function Hero() {
           </motion.div>
 
           {/* Trust bar */}
-          <motion.div
-            variants={ctaVariant}
-            className="flex flex-col sm:flex-row gap-6 sm:gap-10"
-          >
+          <motion.div variants={ctaVariant} className="flex flex-col sm:flex-row gap-6 sm:gap-10">
             {TRUST_ITEMS.map(({ icon: Icon, label }) => (
               <div key={label} className="flex items-center gap-3 text-white/60">
                 <Icon size={16} className="text-brand flex-shrink-0" />
@@ -144,9 +173,50 @@ export default function Hero() {
         </motion.div>
       </div>
 
+      {/* Brand carousel */}
+      <motion.div
+        className="relative z-20 w-full mt-auto border-t border-white/[0.06] bg-[#0A0A0A]/80 backdrop-blur-sm"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.8 }}
+      >
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center py-6 gap-6 md:gap-0">
+
+            {/* Label */}
+            <div className="flex-shrink-0 md:border-r md:border-white/[0.08] md:pr-8 md:mr-8">
+              <p className="text-white/30 text-xs font-semibold tracking-[0.18em] uppercase whitespace-nowrap text-center md:text-right">
+                Multimarca
+              </p>
+            </div>
+
+            {/* Slider */}
+            <div className="relative flex-1 overflow-hidden w-full">
+              <InfiniteSlider speed={35} gap={56} pauseOnHover>
+                {BRANDS.map(({ name, logo }) => (
+                  <div key={name} className="flex items-center justify-center flex-shrink-0">
+                    <img
+                      src={logo}
+                      alt={`${name} — Moto Paradise Monterrey`}
+                      className="h-7 w-auto object-contain opacity-35 hover:opacity-90 transition-opacity duration-300"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+              </InfiniteSlider>
+
+              {/* Edge fades */}
+              <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#0A0A0A] to-transparent" />
+              <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[#0A0A0A] to-transparent" />
+            </div>
+
+          </div>
+        </div>
+      </motion.div>
+
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
+        className="absolute bottom-28 left-1/2 -translate-x-1/2 z-20 hidden md:flex flex-col items-center gap-2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 0.8 }}
