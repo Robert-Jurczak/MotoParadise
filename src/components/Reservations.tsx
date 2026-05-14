@@ -13,7 +13,7 @@ export default function Reservations() {
         calLink: 'bob-ftnxbw',
       })
       cal('ui', {
-        styles: { branding: { brandColor: '#DF0914' } },
+        cssVarsPerTheme: { dark: { 'cal-brand': '#DF0914' }, light: { 'cal-brand': '#DF0914' } },
         hideEventTypeDetails: false,
         layout: 'month_view',
       })
@@ -55,7 +55,7 @@ export default function Reservations() {
         >
           <div
             id="cal-inline-embed"
-            style={{ width: '100%', height: '100%', minHeight: 600, overflow: 'scroll' }}
+            style={{ width: '100%', height: '100%', minHeight: 600, overflow: 'scroll', position: 'relative' }}
           />
         </motion.div>
 
